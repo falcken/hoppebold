@@ -28,10 +28,14 @@ void baggrund() {
   background(0, 204, 204);
   fill(150, 75, 0);
   rectMode(CORNERS);
+//træstamme venstre
   rect(100, 400, 150, 200);
+// træstamme midte
   rect(300, 400, 350, 200);
+//træstamme højre
   rect(500, 400, 550, 200);
-  fill(0, 255, 0);
+  fill(102, 204, 0);
+// trækrone venstre
   ellipse(100, 200, 75, 75);
   ellipse(80, 230, 75, 75);
   ellipse(150, 200, 75, 75);
@@ -39,7 +43,7 @@ void baggrund() {
   ellipse(100, 260, 75, 75);
   ellipse(150, 260, 75, 75);
   ellipse(125, 230, 75, 75);
-
+// trækrone midte
   ellipse(300, 200, 75, 75);
   ellipse(280, 230, 75, 75);
   ellipse(350, 200, 75, 75);
@@ -47,7 +51,7 @@ void baggrund() {
   ellipse(300, 260, 75, 75);
   ellipse(350, 260, 75, 75);
   ellipse(325, 230, 75, 75);
-
+// trækrone højre
   ellipse(500, 200, 75, 75);
   ellipse(480, 230, 75, 75);
   ellipse(550, 200, 75, 75);
@@ -55,9 +59,9 @@ void baggrund() {
   ellipse(500, 260, 75, 75);
   ellipse(550, 260, 75, 75);
   ellipse(525, 230, 75, 75);
-
+//sol
   fill(255, 255, 0);
-  ellipse(700, 0, 100, 100);
+  ellipse(700, 0, 150, 150);
 }
 
 void mouseClicked() {
