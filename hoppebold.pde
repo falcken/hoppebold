@@ -13,14 +13,17 @@ void draw() {
   PVector gravity = new PVector(0,0.1);
 
   for (int i = 0; i < moverAmount; i++) {
+    for (int j = 0; j < moverAmount; j++) {
+      if (j != i) {
+        movers[i].checkCollision(movers[j]);
+      }
+    }
     movers[i].applyForce(wind);
     movers[i].applyForce(gravity);
     movers[i].update();
     movers[i].display();
     movers[i].checkEdges();
   }
-
-//  checkClick();
 }
 
 void baggrund() {
@@ -58,11 +61,15 @@ void baggrund() {
 
   fill(255, 255, 0);
   ellipse(700, 0, 100, 100);
+  
+  stroke(255);
+  line(0, 350, width, 400);
+  triangle(0, 350, 0, 400, width, 400);
 }
 
 void mouseClicked() {
   if (moverAmount < 100) {
-    movers[moverAmount] = new Mover(5,0,0);
+    movers[moverAmount] = new Mover(2, mouseX, mouseY);
     moverAmount++;
   }
 }
