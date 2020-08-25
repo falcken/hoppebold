@@ -2,10 +2,12 @@ class Mover {
   
   float mass;
   float radius;
+  float lastColl = 0;
   float maxVelo = 10;
-  float minChange = 0.2;
   float lastLocationX = 0;
   float lastLocationY = 0;
+  boolean alive = true;
+  int index;
   
   color fill = color(random(0, 255), random(0, 255), random(0, 255));
   
@@ -41,10 +43,13 @@ class Mover {
   }
   
   void display() {
-    stroke(0);
-    fill(fill);
-    ellipse(location.x,location.y,mass*16,mass*16);
-    lastLocation = location;
+    if (alive) {
+      stroke(0);
+      fill(fill);
+      ellipse(location.x,location.y,mass*16,mass*16);
+    } else {
+      movers.remove(movers.indexOf(this));
+    }
   }
   
   void checkEdges() {
@@ -86,17 +91,29 @@ class Mover {
     // find kollisionslængden
     float minDistance = radius + other.radius;
     
+    //float collisionAngle = PVector.angleBetween(location, other.location);
+    //collisionAngle = collisionAngle*(180/PI);
+    
+    float heading = degrees(location.heading());
+    
     // hvis sammenstød
-    if (distanceVectMag < minDistance) {
-      if(distanceVectMag < minDistance-7) {
+    if (distanceVectMag <= minDistance /*&& other.alive*/) {
+      
+      if(distanceVectMag < minDistance-5) {
         location.x = random(0, 700);
         location.y = random(0, 300);
         velocity.set(0.5, 0.5);
       }
-       velocity.x *= -1;
-       velocity.y *= -1;
-       
-       fill = color(random(0, 255), random(0, 255), random(0, 255));
+      
+      //println(l  ocation.x, location.y);
+      //location.x = location.x + radius*cos(collisionAngle);
+      //location.y = location.y + radius*sin(collisionAngle);
+      //println(heading);
+      
+      velocity.x *= -1;
+      velocity.y *= -1;
+     
+      fill = color(random(0, 255), random(0, 255), random(0, 255));
     }
   }
 }
